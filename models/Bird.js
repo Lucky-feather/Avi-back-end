@@ -13,6 +13,9 @@ const birdSchema = new Schema({
   },
   image: {
     type: String,
+  },
+  author: {
+    type: Schema.Types.ObjectId, ref: 'Profile'
   }
 },
   {timestamps: true}

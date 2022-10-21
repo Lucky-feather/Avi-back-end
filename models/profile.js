@@ -10,13 +10,17 @@ const birdbookSchema = new Schema({
 })
 
 const profileSchema = new Schema({
-  name: String,
-  photo: String,
+  name: {
+    type: String,
+    required: true,
+  },
+  photo: {
+    type: String,
+    default: String,
+  },
+  about: String,
   birdbook: [birdbookSchema],
-  events: [{type: Schema.Types.ObjectId, ref: 'Event'}],
   supplylist: { type: Schema.Types.ObjectId, ref: 'Supplylist'},
-},{
-  timestamps: true, 
 })
 
 const Profile = mongoose.model('Profile', profileSchema)
