@@ -3,9 +3,8 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const birdbookSchema = new Schema({
-  name: String,
-  seen: Boolean,
-  wishlist: Boolean,
+  seen: [{type: Schema.Types.ObjectId, ref: 'Bird'}],
+  wishlist: [{ type: Schema.Types.ObjectId, ref: 'Bird'}],
 }, {
   timestamps: true
 })
@@ -13,9 +12,11 @@ const birdbookSchema = new Schema({
 const profileSchema = new Schema({
   name: String,
   photo: String,
-  birdbook: [birdbookSchema]
+  birdbook: [birdbookSchema],
+  events: [{type: Schema.Types.ObjectId, ref: 'Event'}],
+  supplylist: { type: Schema.Types.ObjectId, ref: 'Supplylist'},
 },{
-  timestamps: true,
+  timestamps: true, 
 })
 
 const Profile = mongoose.model('Profile', profileSchema)

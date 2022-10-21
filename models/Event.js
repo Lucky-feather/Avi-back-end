@@ -3,10 +3,10 @@ import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
 const eventSchema = new Schema({
-  author: {
+  owner: {
     type: Schema.Types.ObjectId, ref: 'Profile'
   },
-  name: {
+  title: {
     type: String,
     required: true,
   },
@@ -14,7 +14,7 @@ const eventSchema = new Schema({
     type: String,
   },
   date: Date,
-  description: {
+  details: {
     type: String,
     required: true,
   }
