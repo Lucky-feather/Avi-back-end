@@ -19,6 +19,6 @@ const supplySchema = new Schema({
   {timestamps: true}
 )
 
-const Supply = mongoose.model('Supply', supplySchema)
+const SupplyList = mongoose.model('SupplyList', supplySchema)
 
-export { Supply }
+export { SupplyList }
