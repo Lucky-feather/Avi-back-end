@@ -1,4 +1,4 @@
-import { SupplyList } from '../models/supplyList.js'
+import { SupplyList } from '../models/supplylist.js'
 
 function create(req, res) {
   for (let key in req.body) {
