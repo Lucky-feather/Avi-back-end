@@ -14,6 +14,8 @@ router.get('/', checkAuth, questionCtrl.index)
 router.get('/:id', checkAuth, questionCtrl.show)
 router.put('/:id', checkAuth, questionCtrl.update)
 router.delete('/:id', checkAuth, questionCtrl.delete)
-router.post('/:id/answer', checkAuth, questionCtrl.createAnswer)
+
+router.post('/:id/answers', checkAuth, questionCtrl.createAnswer)
+router.put('/:questionId/answers/:answerId', checkAuth, questionCtrl.updateAnswer)
 
 export { router }
