@@ -1,4 +1,4 @@
-import { Bird } from "../models/bird"
+import { Bird } from "../models/bird.js"
 import { v2 as cloudinary } from 'cloudinary'
 
 function create(req, res) {
