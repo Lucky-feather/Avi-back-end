@@ -1,13 +1,13 @@
-import { Bird } from "../models/bird"
-import { v2 as cloudinary } from 'cloudinary'
+import { Event } from "../models/event.js"
+
 
 function create(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
   }
-  Bird.create(req.body)
-  .then(bird => {
-    res.json(bird)
+  Event.create(req.body)
+  .then(event => {
+    res.json(event)
   })
   .catch(err => {
     console.log(err)
@@ -17,9 +17,9 @@ function create(req, res) {
 
 
 function show(req, res) {
-  Bird.findById(req.params.id)
-  .then(bird => {
-    res.json(bird)
+  Event.findById(req.params.id)
+  .then(event => {
+    res.json(event)
   })
   .catch(err => {
     console.log(err)
@@ -28,9 +28,9 @@ function show(req, res) {
 }
 
 function index(req, res) {
-  Bird.find({})
-  .then(birds => {
-    res.json(birds)
+  Event.find({})
+  .then(events => {
+    res.json(events)
   })
   .catch(err => {
     console.log(err)
@@ -38,10 +38,10 @@ function index(req, res) {
   })
 }
 
-function deleteBird(req, res) {
-  Bird.findByIdAndDelete(req.params.id)
-  .then(deletedBird => {
-    res.json(deletedBird)
+function deleteEvent(req, res) {
+  Event.findByIdAndDelete(req.params.id)
+  .then(deletedEvent => {
+    res.json(deletedEvent)
   })
   .catch(err => {
     console.log(err)
@@ -49,13 +49,13 @@ function deleteBird(req, res) {
   })
 }
 
-function updateBird(req, res) {
+function updateEvent(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
   }
-  Bird.findByIdAndUpdate(req.params.id, req.body, {new: true})
-  .then(updatedBird => {
-    res.json(updatedBird)
+  Event.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(updatedEvent => {
+    res.json(updatedEvent)
   })
   .catch(err => {
     console.log(err)
@@ -68,6 +68,6 @@ export {
   create,
   show,
   index,
-  deleteBird as delete,
-  updateBird as update
+  deleteEvent as delete,
+  updateEvent as update
 }

@@ -9,10 +9,10 @@ const router = Router()
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.post('/', checkAuth, blogsCtrl.create)
-router.get('/', checkAuth, blogsCtrl.index)
-router.get('/:id', checkAuth, blogsCtrl.show)
-router.put('/:id', checkAuth, blogsCtrl.update)
-router.delete('/:id', checkAuth, blogsCtrl.delete)
+router.post('/', checkAuth, birdCtrl.create)
+router.get('/', checkAuth, birdCtrl.index)
+router.get('/:id', checkAuth, birdCtrl.show)
+router.put('/:id', checkAuth, birdCtrl.update)
+router.delete('/:id', checkAuth, birdCtrl.delete)
 
 export { router }
