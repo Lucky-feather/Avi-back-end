@@ -93,6 +93,17 @@ const updateAnswer = async (req, res) => {
   }
 }
 
+const deleteAnswer = async (req, res) => {
+  try {
+    const question = await Question.findById(req.params.questionId)
+    question.answers.remove({ _id: req.params.answerId })
+    await question.save()
+    res.status(200).json(question)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+}
+
 export {
   create,
   show,
@@ -101,4 +112,5 @@ export {
   updateQuestion as update,
   createAnswer,
   updateAnswer,
+  deleteAnswer,
 }

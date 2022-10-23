@@ -17,5 +17,6 @@ router.delete('/:id', checkAuth, questionCtrl.delete)
 
 router.post('/:id/answers', checkAuth, questionCtrl.createAnswer)
 router.put('/:questionId/answers/:answerId', checkAuth, questionCtrl.updateAnswer)
+router.delete('/:questionId/answers/:answerId', checkAuth, questionCtrl.deleteAnswer)
 
 export { router }
