@@ -20,7 +20,7 @@ const profileSchema = new Schema({
   },
   about: String,
   birdbook: [birdbookSchema],
-  supplylist: { type: Schema.Types.ObjectId, ref: 'Supplylist'},
+  supplyList: [{ type: Schema.Types.ObjectId, ref: 'Supplylist'}],
 })
 
 const Profile = mongoose.model('Profile', profileSchema)
