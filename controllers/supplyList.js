@@ -4,6 +4,7 @@ function create(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
   }
+  req.body.owner = req.user.profile
   SupplyList.create(req.body)
   .then(supplyList => {
     res.json(supplyList)
