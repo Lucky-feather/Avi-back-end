@@ -30,6 +30,7 @@ function show(req, res) {
 
 function index(req, res) {
   Event.find({})
+  .populate('owner')
   .then(events => {
     res.json(events)
   })
