@@ -5,6 +5,7 @@ function create(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
   }
+  req.body.author = req.user.profile
   Question.create(req.body)
   .then(question => {
     res.json(question)
