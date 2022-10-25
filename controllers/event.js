@@ -19,6 +19,7 @@ function create(req, res) {
 
 function show(req, res) {
   Event.findById(req.params.id)
+  .populate('owner')
   .then(event => {
     res.json(event)
   })
