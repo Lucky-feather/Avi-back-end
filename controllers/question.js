@@ -19,6 +19,7 @@ function create(req, res) {
 
 function show(req, res) {
   Question.findById(req.params.id)
+  .populate('author')
   .then(question => {
     res.json(question)
   })
@@ -30,6 +31,7 @@ function show(req, res) {
 
 function index(req, res) {
   Question.find({})
+  .populate('author')
   .then(questions => {
     res.json(questions)
   })
