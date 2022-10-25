@@ -19,6 +19,7 @@ function create(req, res) {
 
 function show(req, res) {
   Bird.findById(req.params.id)
+  .populate('author')
   .then(bird => {
     res.json(bird)
   })
@@ -30,6 +31,7 @@ function show(req, res) {
 
 function index(req, res) {
   Bird.find({})
+  .populate('author')
   .then(birds => {
     res.json(birds)
   })
