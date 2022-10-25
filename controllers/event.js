@@ -5,6 +5,7 @@ function create(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
   }
+  req.body.owner = req.user.profile
   Event.create(req.body)
   .then(event => {
     res.json(event)
