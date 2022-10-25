@@ -18,6 +18,7 @@ function create(req, res) {
 
 function show(req, res) {
   SupplyList.findById(req.params.id)
+  .populate('owner')
   .then(supplyList => {
     res.json(supplyList)
   })
@@ -29,6 +30,7 @@ function show(req, res) {
 
 function index(req, res) {
   SupplyList.find({})
+  .populate('owner')
   .then(supplyLists => {
     res.json(supplyLists)
   })
