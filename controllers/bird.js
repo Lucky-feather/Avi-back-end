@@ -66,11 +66,32 @@ function updateBird(req, res) {
   })
 }
 
+function addPhoto(req, res) {
+  const imageFile = req.files.photo.path
+  Bird.findById(req.params.id)
+  .then(bird => {
+    cloudinary.uploader.upload(imageFile, {tags: `birds`})
+    .then(image => {
+      bird.photo = image.url
+      bird.save()
+      .then(bird => {
+        res.status(201).json(bird.photo)
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+  })
+}
+
+
 
 export {
   create,
   show,
   index,
   deleteBird as delete,
-  updateBird as update
+  updateBird as update,
+  addPhoto,
 }
