@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const answerSchema = new Schema ({
   author: {type: Schema.Types.ObjectId, ref: 'Profile'},
-  answer: {
+  text: {
     type: String,
     required: true,
     },

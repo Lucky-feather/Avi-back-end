@@ -68,15 +68,14 @@ function updateQuestion(req, res) {
 
 const createAnswer = async (req, res) => {
   try {
+    console.log(req.body)
     req.body.author = req.user.profile
     const question = await Question.findById(req.params.id)
     question.answers.push(req.body)
     await question.save()
-    
+  
     const newAnswer = question.answers[question.answers.length - 1]
-    
-    const profile = await Profile.findById(req.user.profile)
-    newAnswer.author = profile
+    console.log(newAnswer)
 
     res.status(201).json(newAnswer)
   } catch (err) {
