@@ -11,7 +11,7 @@ const birdSchema = new Schema({
     type: String,
     required: true,
   },
-  image: {
+  photo: {
     type: String,
   },
   author: {
