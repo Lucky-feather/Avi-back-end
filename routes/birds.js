@@ -13,6 +13,7 @@ router.post('/', checkAuth, birdCtrl.create)
 router.get('/', checkAuth, birdCtrl.index)
 router.get('/:id', checkAuth, birdCtrl.show)
 router.put('/:id', checkAuth, birdCtrl.update)
+router.put('/:id/add-photo', birdCtrl.addPhoto)
 router.delete('/:id', checkAuth, birdCtrl.delete)
 
 export { router }
