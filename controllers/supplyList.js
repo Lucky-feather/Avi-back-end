@@ -28,6 +28,7 @@ function show(req, res) {
   })
 }
 
+
 const index = async (req, res) => {
   try {
     const supplylists = await SupplyList.find({})

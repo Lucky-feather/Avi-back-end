@@ -29,15 +29,16 @@ function show(req, res) {
   })
 }
 
-const index = async (req, res) => {
-  try {
-    const birds = await Bird.find({})
-      .populate('author')
-      .sort({ createdAt: 'desc' })
-    res.status(200).json(birds)
-  } catch (err) {
-    res.status(500).json(err)
-  }
+function index(req, res) {
+  Bird.find({})
+  .populate('author')
+  .then(birds => {
+    res.json(birds)
+  })
+  .catch(err => {
+    console.log(err)
+    res.json(err)
+  })
 }
 
 function deleteBird(req, res) {
