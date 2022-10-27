@@ -29,16 +29,15 @@ function show(req, res) {
   })
 }
 
-function index(req, res) {
-  Question.find({})
-  .populate('author')
-  .then(questions => {
-    res.json(questions)
-  })
-  .catch(err => {
-    console.log(err)
-    res.json(err)
-  })
+const index = async (req, res) => {
+  try {
+    const questions = await Question.find({})
+      .populate('author')
+      .sort({ createdAt: 'desc' })
+    res.status(200).json(questions)
+  } catch (err) {
+    res.status(500).json(err)
+  }
 }
 
 function deleteQuestion(req, res) {
