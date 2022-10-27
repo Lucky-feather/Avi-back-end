@@ -11,7 +11,6 @@ const profileSchema = new Schema({
   },
   photo: {
     type: String,
-    default: String,
   },
   about: String,
   supplyList: [{ type: Schema.Types.ObjectId, ref: 'Supplylist'}],
