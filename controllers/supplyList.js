@@ -28,16 +28,16 @@ function show(req, res) {
   })
 }
 
-function index(req, res) {
-  SupplyList.find({})
-  .populate('owner')
-  .then(supplyLists => {
-    res.json(supplyLists)
-  })
-  .catch(err => {
-    console.log(err)
-    res.json(err)
-  })
+
+const index = async (req, res) => {
+  try {
+    const supplylists = await SupplyList.find({})
+      .populate('owner')
+      .sort({ createdAt: 'desc' })
+    res.status(200).json(supplylists)
+  } catch (err) {
+    res.status(500).json(err)
+  }
 }
 
 function deleteSupplyList(req, res) {
