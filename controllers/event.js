@@ -1,5 +1,5 @@
 import { Event } from "../models/event.js"
-
+import { Profile } from "../models/profile.js"
 
 function create(req, res) {
   for (let key in req.body) {
@@ -8,7 +8,11 @@ function create(req, res) {
   req.body.owner = req.user.profile
   Event.create(req.body)
   .then(event => {
-    res.json(event)
+    Profile.findById(req.user.profile)
+    .then(profile => {
+      event.owner= profile
+      res.json(event)
+    }) 
   })
   .catch(err => {
     console.log(err)
@@ -32,6 +36,7 @@ function show(req, res) {
 function index(req, res) {
   Event.find({})
   .populate('owner')
+  .sort({createdAt:'desc'})
   .then(events => {
     res.json(events)
   })
