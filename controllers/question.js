@@ -8,12 +8,16 @@ function create(req, res) {
   req.body.author = req.user.profile
   Question.create(req.body)
   .then(question => {
+    Profile.findById(req.user.profile)
+  .then(profile => {
+    question.author = profile
     res.json(question)
   })
+}) 
   .catch(err => {
     console.log(err)
     res.json(err)
-  })
+  }) 
 }
 
 
