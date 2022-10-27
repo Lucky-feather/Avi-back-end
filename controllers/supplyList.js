@@ -1,4 +1,3 @@
-import { Question } from '../models/question.js'
 import { SupplyList } from '../models/supplylist.js'
 
 function create(req, res) {
@@ -31,9 +30,9 @@ function show(req, res) {
 
 const index = async (req, res) => {
   try {
-    const supplylists = await Question.find({})
+    const supplylists = await SupplyList.find({})
       .populate('owner')
-      .sort({ createdAt: 'desc '})
+      .sort({ createdAt: 'desc' })
     res.status(200).json(supplylists)
   } catch (err) {
     res.status(500).json(err)
