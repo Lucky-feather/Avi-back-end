@@ -1,4 +1,5 @@
 import { SupplyList } from '../models/supplylist.js'
+import { Profile } from '../models/profile.js'
 
 function create(req, res) {
   for (let key in req.body) {
