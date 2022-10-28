@@ -8,14 +8,17 @@ function create(req, res) {
   req.body.author = req.user.profile
   Bird.create(req.body)
   .then(bird => {
-    res.json(bird)
+    Profile.findById(req.user.profile)
+    .then(profile => {
+      bird.author = profile
+      res.json(bird)
+    }) 
   })
   .catch(err => {
     console.log(err)
     res.json(err)
   })
 }
-
 
 function show(req, res) {
   Bird.findById(req.params.id)
