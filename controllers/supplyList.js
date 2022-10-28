@@ -7,7 +7,11 @@ function create(req, res) {
   req.body.owner = req.user.profile
   SupplyList.create(req.body)
   .then(supplyList => {
-    res.json(supplyList)
+    Profile.findById(req.user.profile)
+    .then(profile => {
+      supplyList.owner= profile
+      res.json(supplyList)
+    }) 
   })
   .catch(err => {
     console.log(err)
