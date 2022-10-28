@@ -35,6 +35,7 @@ function show(req, res) {
 function index(req, res) {
   Bird.find({})
   .populate('author')
+  .sort({createdAt:'desc'})
   .then(birds => {
     res.json(birds)
   })
