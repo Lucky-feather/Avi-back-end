@@ -1,5 +1,6 @@
 import { Bird } from "../models/bird.js"
 import { v2 as cloudinary } from 'cloudinary'
+import { Profile } from '../models/profile.js'
 
 function create(req, res) {
   for (let key in req.body) {
